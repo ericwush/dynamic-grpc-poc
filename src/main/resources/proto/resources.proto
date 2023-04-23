@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option java_package = "com.example.client";
+option java_outer_classname = "Resources";
+import "options.proto";
+
+message PrimaryKey {
+  oneof pk {
+    AccountKey accountKey = 1;
+    UserKey userKey = 2;
+  }
+}
+
+message Reference {
+  PrimaryKey ref = 1;
+}
+
+message AccountKey {
+  option (primary_key) = true;
+  int32 id = 1;
+}
+
+message Account {
+  AccountKey id = 1;
+  string name = 2;
+}
+
+message UserKey {
+  option (primary_key) = true;
+  string first_name = 1;
+  string last_name = 2;
+}
+
+message User {
+  UserKey name = 1;
+  Reference account = 2 [(relationship) = PARENT];
+  string email = 3;
+}

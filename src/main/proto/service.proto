@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package example;
+
+service ResourceService {
+  rpc CreateResource (CreateResourceRequest) returns (CreateResourceResponse);
+  rpc GetResource (GetResourceRequest) returns (GetResourceResponse);
+}
+
+message CreateResourceRequest {
+  string resource_type = 1;
+  bytes resource_data = 2;
+}
+
+message CreateResourceResponse {
+  string status = 1;
+}
+
+message GetResourceRequest {
+  string resource_type = 1;
+  bytes primary_key = 2;
+}
+
+message GetResourceResponse {
+  string status = 1;
+  bytes resource_data = 2;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.example.client";
+option java_outer_classname = "Options";
+import "google/protobuf/descriptor.proto";
+
+enum Relationship {
+  PARENT = 0;
+}
+
+extend google.protobuf.MessageOptions {
+  bool primary_key = 50001;
+}
+
+extend google.protobuf.FieldOptions {
+  Relationship relationship = 50001;
+}
